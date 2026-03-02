@@ -30,10 +30,14 @@ VBoxManage --help
 | ![](Attached_materials/VB_ImportVM_2.png) | ![](Attached_materials/VB_ImportVM_2_papillon.png) |
 
 2. Клонирование основной машины (работа на основной машине **не** выполняется; для практики она клонируется связно (клон представляет из себя не отдельную машину, а связанный блок изменений основной ВМ и клонированной)). 
-   ПКМ по основной машине -> "Clone" (`Ctrl+O`)
+   ПКМ по основной машине → "Clone" (`Ctrl+O`)
 ![](Attached_materials/VB_Clone_1.png)
 
-1. Настройка `COM`-порта (при копировании `COM`-порт не меняется, необходимо вручную менять его значение)
+
+3. Переход в настройки ВМ:
+![](Attached_materials/VB_Settings.png)
+
+4. Настройка `COM`-порта (при копировании `COM`-порт не меняется, необходимо вручную менять его значение)
 ![](Attached_materials/VB_Com_1.png)
 
 #### Настройка из командной строки
@@ -62,21 +66,22 @@ Successfully imported the appliance.
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%  
 Snapshot taken. UUID: 3e6c0a9a-b9a8-44e6-92de-e96cd9db3790
 
-~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2025 --name=srv --options=Link --snapshot=srv_snapshot --register
+~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2026 --name=srv --options=Link --snapshot=srv_snapshot --register
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%  
 Machine has been successfully cloned as "srv"
 ```
 
 Если не сделать `--register`, необходимо будет отдельно регистрировать клон:
 ```console
-~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2025 --name=no_srv --options=Link --snapshot=srv_snapshot
+~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2026 --name=no_srv --options=Link --snapshot=srv_snapshot
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%  
 Machine has been successfully cloned as "no_srv"  
 
 ~/papillon_rouge: VBoxManage list vms
 "protocols-jeos-20250216-x86_64" {bf46ead4-51c1-48b3-946a-36f462c34312}  
 "srv" {d1f761b8-742b-4008-9d25-dc1a3a3bd7ab}  
-~/papillon_rouge: VBoxManage registervm ~/VirtualBox\ VMs/LinuxNetwork2025/no_srv/no_srv.vbox
+
+~/papillon_rouge: VBoxManage registervm ~/VirtualBox\ VMs/LinuxNetwork2026/no_srv/no_srv.vbox
 
 ~/papillon_rouge: VBoxManage list vms 
 "protocols-jeos-20250216-x86_64" {bf46ead4-51c1-48b3-946a-36f462c34312}  
