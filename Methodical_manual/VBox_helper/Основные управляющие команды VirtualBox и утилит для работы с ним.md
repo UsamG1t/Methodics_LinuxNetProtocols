@@ -66,14 +66,14 @@ Successfully imported the appliance.
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%  
 Snapshot taken. UUID: 3e6c0a9a-b9a8-44e6-92de-e96cd9db3790
 
-~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2026 --name=srv --options=Link --snapshot=srv_snapshot --register
+~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2027 --name=srv --options=Link --snapshot=srv_snapshot --register
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%  
 Machine has been successfully cloned as "srv"
 ```
 
 Если не сделать `--register`, необходимо будет отдельно регистрировать клон:
 ```console
-~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2026 --name=no_srv --options=Link --snapshot=srv_snapshot
+~/papillon_rouge: VBoxManage clonevm protocols-jeos-20250216-x86_64 --groups=/LinuxNetwork2027 --name=no_srv --options=Link --snapshot=srv_snapshot
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%  
 Machine has been successfully cloned as "no_srv"  
 
@@ -81,7 +81,7 @@ Machine has been successfully cloned as "no_srv"
 "protocols-jeos-20250216-x86_64" {bf46ead4-51c1-48b3-946a-36f462c34312}  
 "srv" {d1f761b8-742b-4008-9d25-dc1a3a3bd7ab}  
 
-~/papillon_rouge: VBoxManage registervm ~/VirtualBox\ VMs/LinuxNetwork2026/no_srv/no_srv.vbox
+~/papillon_rouge: VBoxManage registervm ~/VirtualBox\ VMs/LinuxNetwork2027/no_srv/no_srv.vbox
 
 ~/papillon_rouge: VBoxManage list vms 
 "protocols-jeos-20250216-x86_64" {bf46ead4-51c1-48b3-946a-36f462c34312}  
@@ -100,16 +100,3 @@ Machine has been successfully cloned as "no_srv"
 ~/papillon_rouge: vbsnap Downloads/protocols-jeos-x86_64.ova
 ~/papillon_rouge: vbsnap protocols-jeos-20250216-x86_64 srv
 ```
-
-
-%%
-// Запуск через ВБокс + вытягивание через сокат терминальчика
-
-VBoxManage startvm base --type=headless                                         0|1 ✘      
-Waiting for VM "base" to power on...  
-VM "base" has been successfully started.
-
-socat -,cfmakeraw,echo=0,escape=15 TCP4:localhost:ПОРТ
-
-`netcat` - способ подключения через сокет для приёма-передачи данных. socat - с изотерическими параметрами
-%%

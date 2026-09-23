@@ -1,0 +1,12 @@
+markdown: kramdown
+theme: jekyll-theme-slate
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+title: Methodics of Linux Network Protocols
+description: Practical materials for learning TCP/IP and its` realization on Linux
