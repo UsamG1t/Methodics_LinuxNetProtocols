@@ -25,10 +25,10 @@ jobs:
         id: commit
         run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Reset pages branch to master
+      - name: Reset pages branch to IPv6
         run: |
           git fetch origin
-          git checkout -B pages master
+          git checkout -B pages IPv6
 
       - name: Convert markdown links
         run: |
